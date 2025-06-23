@@ -30,6 +30,7 @@ namespace OPS.Infrastructure.Implementations.InternalServices.Customers
                 LastName = request.LastName,
                 Email = request.Email,
                 Password = request.Password,
+                Gender = request.Gender,
                 Phone = request.Phone,
                 Address = request.Address
             };

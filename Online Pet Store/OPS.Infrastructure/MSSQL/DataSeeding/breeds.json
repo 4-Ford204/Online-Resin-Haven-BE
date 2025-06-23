@@ -1,42 +1,42 @@
 ﻿[
   {
     "Name": "Alaska",
-    "SpeciesID": 1
+    "SpeciesId": 1
   },
   {
     "Name": "Husky",
-    "SpeciesID": 1
+    "SpeciesId": 1
   },
   {
     "Name": "Shiba",
-    "SpeciesID": 1
+    "SpeciesId": 1
   },
   {
     "Name": "Corgi",
-    "SpeciesID": 1
+    "SpeciesId": 1
   },
   {
     "Name": "Poodle",
-    "SpeciesID": 1
+    "SpeciesId": 1
   },
   {
     "Name": "Persian",
-    "SpeciesID": 2
+    "SpeciesId": 2
   },
   {
     "Name": "Maine Coon",
-    "SpeciesID": 2
+    "SpeciesId": 2
   },
   {
     "Name": "Siamese",
-    "SpeciesID": 2
+    "SpeciesId": 2
   },
   {
     "Name": "Bengal",
-    "SpeciesID": 2
+    "SpeciesId": 2
   },
   {
     "Name": "Munchkin",
-    "SpeciesID": 2
+    "SpeciesId": 2
   }
 ]

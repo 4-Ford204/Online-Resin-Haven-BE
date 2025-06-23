@@ -10,9 +10,9 @@ namespace OPS.Infrastructure.MSSQL.Configurations
         {
             builder.ToTable("Species");
 
-            builder.HasKey(s => s.SpeciesID);
+            builder.HasKey(s => s.Id);
 
-            builder.Property(s => s.SpeciesID).ValueGeneratedOnAdd();
+            builder.Property(s => s.Id).ValueGeneratedOnAdd();
             builder.Property(s => s.Name).IsRequired();
         }
     }

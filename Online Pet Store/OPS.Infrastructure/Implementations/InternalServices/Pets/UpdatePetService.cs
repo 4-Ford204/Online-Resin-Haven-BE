@@ -16,7 +16,7 @@ namespace OPS.Infrastructure.Implementations.InternalServices.Pets
 
         public async Task<bool> UpdateOwnerId(int petId, int customerId)
         {
-            var pet = dbContext.Pets.FirstOrDefault(p => p.PetID == petId);
+            var pet = dbContext.Pets.FirstOrDefault(p => p.Id == petId);
 
             if (pet == null)
             {
@@ -24,7 +24,9 @@ namespace OPS.Infrastructure.Implementations.InternalServices.Pets
             }
 
             pet.OwnerId = customerId;
-            dbContext.Pets.Update(pet);
+
+            dbContext.Entry(pet).Property(p => p.OwnerId).IsModified = true;
+
             var result = await dbContext.SaveChangesAsync().ContinueWith(x => x.Result > 0);
 
             return result;

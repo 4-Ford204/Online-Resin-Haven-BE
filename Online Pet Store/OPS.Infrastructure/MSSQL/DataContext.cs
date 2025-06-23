@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using OPS.Domain.Entities;
+using OPS.Infrastructure.MSSQL.Interceptors;
 
 namespace OPS.Infrastructure.MSSQL
 {
@@ -26,6 +27,8 @@ namespace OPS.Infrastructure.MSSQL
 
                 optionsBuilder.UseSqlServer(connectionString);
             }
+
+            optionsBuilder.AddInterceptors(new AuditableEntityInterceptor());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

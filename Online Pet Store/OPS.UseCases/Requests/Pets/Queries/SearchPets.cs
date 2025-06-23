@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using Ardalis.SharedKernel;
+using OPS.Domain.Constants.Enums;
 using OPS.UseCases.Interfaces.InternalServices.Pets;
 
 namespace OPS.UseCases.Requests.Pets.Queries
@@ -29,8 +30,9 @@ namespace OPS.UseCases.Requests.Pets.Queries
         public string? Species { get; set; }
         public string? Breed { get; set; }
         public int? Age { get; set; }
-        public required bool Gender { get; set; }
+        public required Gender Gender { get; set; }
         public required int Price { get; set; }
         public required string Image { get; set; }
+        public string? Description { get; set; }
     }
 }

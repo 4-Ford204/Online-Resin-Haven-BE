@@ -10,15 +10,15 @@ namespace OPS.Infrastructure.MSSQL.Configurations
         {
             builder.ToTable("Breeds");
 
-            builder.HasKey(b => b.BreedID);
+            builder.HasKey(b => b.Id);
 
-            builder.Property(b => b.BreedID).ValueGeneratedOnAdd();
+            builder.Property(b => b.Id).ValueGeneratedOnAdd();
             builder.Property(b => b.Name).IsRequired();
-            builder.Property(b => b.SpeciesID).IsRequired(false);
+            builder.Property(b => b.SpeciesId).IsRequired(false);
 
             builder.HasOne(b => b.Species)
                 .WithMany(s => s.Breeds)
-                .HasForeignKey(b => b.SpeciesID)
+                .HasForeignKey(b => b.SpeciesId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
     }

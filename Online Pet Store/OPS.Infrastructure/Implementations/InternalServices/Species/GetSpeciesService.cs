@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using OPS.Domain.Constants.Enums;
 using OPS.Infrastructure.MSSQL;
 using OPS.UseCases.Interfaces.InternalServices.Species;
 using OPS.UseCases.Requests.Species.Queries;
@@ -18,7 +19,10 @@ namespace OPS.Infrastructure.Implementations.InternalServices.Species
 
         public async Task<List<GetSpeciesResponse>> Execute()
         {
-            var species = await dbContext.Species.Include(s => s.Breeds).ToListAsync();
+            var species = await dbContext.Species
+                .Where(s => s.Status == Status.Active)
+                .Include(s => s.Breeds)
+                .ToListAsync();
             var result = species
                 .Select(s => new GetSpeciesResponse
                 {

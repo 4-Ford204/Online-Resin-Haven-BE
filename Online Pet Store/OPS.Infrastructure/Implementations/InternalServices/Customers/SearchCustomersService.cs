@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using OPS.Domain.Constants.Enums;
 using OPS.Infrastructure.MSSQL;
 using OPS.UseCases.Interfaces.InternalServices.Customers;
 using OPS.UseCases.Requests.Customers.Queries;
@@ -18,41 +19,43 @@ namespace OPS.Infrastructure.Implementations.InternalServices.Customers
 
         public async Task<List<SearchCustomersResponse>> Execute(SearchCustomersRequest request)
         {
-            var customers = dbContext.Customers.AsQueryable();
+            var query = dbContext.Customers.Where(c => c.Status == Status.Active).AsQueryable();
 
             if (request != null)
             {
                 if (!string.IsNullOrEmpty(request.Name))
                 {
-                    customers = customers.Where(c => string.Concat(c.FirstName, c.LastName).ToLower().Contains(request.Name.ToLower()));
+                    query = query.Where(c => string.Concat(c.FirstName, c.LastName).ToLower().Contains(request.Name.ToLower()));
                 }
 
                 if (!string.IsNullOrEmpty(request.Email))
                 {
-                    customers = customers.Where(c => c.Email.Contains(request.Email));
+                    query = query.Where(c => c.Email.Contains(request.Email));
                 }
 
                 if (!string.IsNullOrEmpty(request.Phone))
                 {
-                    customers = customers.Where(c => c.Phone != null && c.Phone.Contains(request.Phone));
+                    query = query.Where(c => c.Phone != null && c.Phone.Contains(request.Phone));
                 }
 
                 if (!string.IsNullOrEmpty(request.Address))
                 {
-                    customers = customers.Where(c => c.Address != null && c.Address.Contains(request.Address));
+                    query = query.Where(c => c.Address != null && c.Address.Contains(request.Address));
                 }
             }
 
-            var result = await customers
+            var customers = await query.ToListAsync();
+            var result = customers
                 .Select(c => new SearchCustomersResponse
                 {
                     FirstName = c.FirstName,
                     LastName = c.LastName,
                     Email = c.Email,
+                    Gender = c.Gender,
                     Phone = c.Phone,
                     Address = c.Address
                 })
-                .ToListAsync();
+                .ToList();
 
             return result;
         }

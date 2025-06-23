@@ -1,8 +1,7 @@
 ﻿namespace OPS.Domain.Entities
 {
-    public class Species
+    public class Species : BaseEntity
     {
-        public int SpeciesID { get; set; }
         public required string Name { get; set; }
 
         public ICollection<Breed> Breeds { get; set; } = [];
