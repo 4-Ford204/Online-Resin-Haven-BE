@@ -1,6 +1,6 @@
-# 🐾 Online-Pet-Store (OPS)
+# 🐾 Online-Resin-Haven (ORH)
 
-This is an online pet store built with .NET 9.0 that applies clean architecture.
+This is backend of an online resin figures store which is built with .NET 9.0 and applies clean architecture.
 
 ---
 
