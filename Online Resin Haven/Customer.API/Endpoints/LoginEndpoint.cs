@@ -12,8 +12,7 @@ namespace Customer.API.Endpoints
         {
             Post("/customer/login");
             AllowAnonymous();
-            Description(b => b
-                .WithTags("Customer Endpoints")
+            Description(x => x
                 .Produces<LoginResponse>(200)
                 .Produces(400)
                 .Produces(500)

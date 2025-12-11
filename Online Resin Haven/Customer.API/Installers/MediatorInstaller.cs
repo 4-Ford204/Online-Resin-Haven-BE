@@ -10,7 +10,7 @@ namespace Customer.API.Installers
         {
             var assemblies = new[] { Assembly.GetAssembly(typeof(ApplicationPoint)) };
 
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assemblies!));
+            services.AddMediatR(options => options.RegisterServicesFromAssemblies(assemblies!));
         }
     }
 }

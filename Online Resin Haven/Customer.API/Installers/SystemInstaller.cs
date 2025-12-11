@@ -9,10 +9,10 @@ namespace Customer.API.Installers
     {
         public void RegisterService(IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JsonOptions>(config =>
+            services.Configure<JsonOptions>(options =>
             {
-                config.SerializerOptions.PropertyNamingPolicy = null;
-                config.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.SerializerOptions.PropertyNamingPolicy = null;
+                options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
             });
 
             services.AddInfrastructure(configuration);

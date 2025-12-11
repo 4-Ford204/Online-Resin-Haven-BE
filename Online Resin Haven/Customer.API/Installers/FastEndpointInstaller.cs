@@ -10,9 +10,9 @@ namespace Customer.API.Installers
         {
             services
                 .AddFastEndpoints()
-                .SwaggerDocument(config =>
+                .SwaggerDocument(options =>
                 {
-                    config.DocumentSettings = settings =>
+                    options.DocumentSettings = settings =>
                     {
                         settings.Title = "Customer API";
                         settings.Version = "v1";

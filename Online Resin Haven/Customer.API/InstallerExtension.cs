@@ -37,6 +37,7 @@ namespace Customer.API
             {
                 config.Endpoints.RoutePrefix = "api";
             });
+
             app.UseSwaggerGen();
         }
     }
